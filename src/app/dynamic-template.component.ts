@@ -37,19 +37,16 @@ export class DynamicTemplateComponent implements AfterViewInit, OnDestroy {
         );
     }
 
-    // Here we create the component.
+    // 用字符串创建一个动态组件
     private createComponentFromRaw(template: string): void {
-        // Let's say your template looks like `<h2><some-component [data]="data"></some-component>`
-        // As you see, it has an (existing) angular component `some-component` and it injects it [data]
-
-        // Now we create a new component. It has that template, and we can even give it data.
+        // 注意模板里用到了 zorro 的组件，所以像其他的 module 一样，需要引入它们
         const tmpCmp = Component({ template })(class {
             data = {
                 some: '123'
             };
         });
 
-        // Now, also create a dynamic module.
+        // 创建一个动态模块，和正常的模块引入各种资源一致
         const tmpModule = NgModule({
             imports: [
                 CommonModule,
@@ -57,10 +54,9 @@ export class DynamicTemplateComponent implements AfterViewInit, OnDestroy {
                 NzButtonModule
             ],
             declarations: [tmpCmp],
-            // providers: [] - e.g. if your dynamic component needs any service, provide it here.
         })(class { });
 
-        // Now compile this module and component, and inject it into that #vc in your current component template.
+        // 编译模块和组件，再把它注入到当前的组件视图中
         this.compiler.compileModuleAndAllComponentsAsync(tmpModule)
             .then((factories) => {
                 const f = factories.componentFactories[0];
@@ -70,7 +66,7 @@ export class DynamicTemplateComponent implements AfterViewInit, OnDestroy {
             });
     }
 
-    // Cleanup properly. You can add more cleanup-related stuff here.
+    // 注意销毁动态创建的组件
     ngOnDestroy(): void {
         if (this.cmpRef) {
             this.cmpRef.destroy();
