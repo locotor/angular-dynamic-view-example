@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { PortalModule } from '@angular/cdk/portal';
 
 registerLocaleData(zh);
 
@@ -27,7 +28,8 @@ registerLocaleData(zh);
     HttpClientModule,
     BrowserAnimationsModule,
     NzGridModule,
-    NzButtonModule
+    NzButtonModule,
+    PortalModule
   ],
   bootstrap: [AppComponent],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }]
