@@ -1,2 +1,15 @@
-<app-dynamic-template></app-dynamic-template>
-<app-cdk-portal></app-cdk-portal>
+<nav>
+    <ul class="nav-list">
+        <li class="nav-item" routerLink="/cdk">CDK</li>
+        <li class="nav-item" routerLink="/native">原生</li>
+        <li class="nav-item" routerLink="/dynamic">动态字符串</li>
+    </ul>
+</nav>
+<section class="main">
+    <header>
+        <h1>Angular 动态视图</h1>
+    </header>
+    <section class="content">
+        <router-outlet></router-outlet>
+    </section>
+</section>

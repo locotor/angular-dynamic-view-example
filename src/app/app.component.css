@@ -1,0 +1,46 @@
+:host {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 2rem;
+}
+
+nav {
+  position: relative;
+  left: 1rem;
+  background: white;
+  height: 50%;
+}
+
+.nav-list {
+  height: 100%;
+  list-style: none;
+  border: 1px solid;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.nav-item {
+  margin: 2rem;
+}
+
+section.main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1rem 2rem;
+  border-left: 1px solid;
+  height: 100%;
+}
+
+header {
+  margin-bottom: 2rem;
+  border-bottom: 2px dotted;
+}
+
+.content {
+  flex: 1;
+  border: 1px solid;
+  border-radius: 1rem;
+  padding: 2rem;
+}
