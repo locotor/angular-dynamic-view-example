@@ -14,13 +14,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { PortalModule } from '@angular/cdk/portal';
+import { CdkPortalComponent } from './cdk-portal.component';
 
 registerLocaleData(zh);
 
 @NgModule({
   declarations: [
     AppComponent,
-    DynamicTemplateComponent
+    DynamicTemplateComponent,
+    CdkPortalComponent
   ],
   imports: [
     BrowserModule,
