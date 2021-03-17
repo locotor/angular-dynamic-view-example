@@ -1,11 +1,25 @@
-<nav>
+<nav class="mat-elevation-z4">
     <ul class="nav-list">
-        <li class="nav-item" routerLink="/cdk">CDK</li>
-        <li class="nav-item" routerLink="/native">原生</li>
-        <li class="nav-item" routerLink="/dynamic">动态字符串</li>
+        <li class="nav-item"><a routerLink="/cdk">CDK</a></li>
+        <li class="nav-item"><a routerLink="/native">原生</a></li>
+        <li class="nav-item"><a routerLink="/dynamic">动态字符串</a></li>
     </ul>
+    <section class="author-info">
+        <img class="avatar" src="/assets/image/avatar.jfif">
+        <div>
+            <a href="https://blog.locotor.cn/" title="github" target="_blank">
+                <mat-icon fontSet="fontawesome" fontIcon="fa-github"></mat-icon>
+            </a>
+            <a href="https://juejin.cn/user/782508008407687" title="juejin" target="_blank">
+                <mat-icon fontSet="fontawesome" fontIcon="fa-book"></mat-icon>
+            </a>
+            <a href="https://blog.locotor.cn/" title="blog" target="_blank">
+                <mat-icon fontSet="fontawesome" fontIcon="fa-rss"></mat-icon>
+            </a>
+        </div>
+    </section>
 </nav>
-<section class="main">
+<section class="main mat-elevation-z6">
     <header>
         <h1>Angular 动态视图</h1>
     </header>
