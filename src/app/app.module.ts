@@ -17,31 +17,37 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { CdkPortalComponent } from './cdk-portal.component';
 import { AppComponent } from './app.component';
-import { DynamicTemplateComponent } from './dynamic-template.component';
+import { DynamicStringComponent } from './dynamic-string.component';
+import { ComponentFactoryComponent } from './component-factory.component';
 
 registerLocaleData(zh);
 
 const routeConfig: Route[] = [
   {
     path: '',
-    redirectTo: 'cdk',
+    redirectTo: 'component-factory',
     pathMatch: 'full'
   },
   {
-    path: 'cdk',
+    path: 'component-factory',
+    component: ComponentFactoryComponent
+  },
+  {
+    path: 'cdk-portal',
     component: CdkPortalComponent
   },
   {
-    path: 'dynamic',
-    component: DynamicTemplateComponent
+    path: 'dynamic-string',
+    component: DynamicStringComponent
   },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    DynamicTemplateComponent,
-    CdkPortalComponent
+    CdkPortalComponent,
+    DynamicStringComponent,
+    ComponentFactoryComponent
   ],
   imports: [
     BrowserModule,

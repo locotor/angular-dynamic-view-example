@@ -7,11 +7,10 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 
 @Component({
-    selector: 'app-dynamic-template',
     template: `<h2>以下内容为动态生成<h2>
           <div #vc></div>`
 })
-export class DynamicTemplateComponent implements AfterViewInit, OnDestroy {
+export class DynamicStringComponent implements AfterViewInit, OnDestroy {
     @ViewChild('vc', { read: ViewContainerRef }) vc?: ViewContainerRef;
 
     private cmpRef?: ComponentRef<any>;
