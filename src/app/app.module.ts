@@ -14,30 +14,34 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 
 import { PortalModule } from '@angular/cdk/portal';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { CdkPortalComponent } from './cdk-portal.component';
 import { AppComponent } from './app.component';
 import { DynamicStringComponent } from './dynamic-string.component';
-import { ComponentFactoryComponent } from './component-factory.component';
+import { ViewContainerExampleComponent } from './view-container-example/view-container-example.component';
+import { AlertComponent } from './view-container-example/alert.component';
 
 registerLocaleData(zh);
 
 const routeConfig: Route[] = [
   {
     path: '',
-    redirectTo: 'component-factory',
+    redirectTo: 'dynamic-view',
     pathMatch: 'full'
   },
   {
-    path: 'component-factory',
-    component: ComponentFactoryComponent
+    path: 'dynamic-view',
+    component: ViewContainerExampleComponent
   },
   {
-    path: 'cdk-portal',
+    path: 'cdk-directive',
     component: CdkPortalComponent
   },
   {
-    path: 'dynamic-string',
+    path: 'string-component',
     component: DynamicStringComponent
   },
 ];
@@ -47,7 +51,8 @@ const routeConfig: Route[] = [
     AppComponent,
     CdkPortalComponent,
     DynamicStringComponent,
-    ComponentFactoryComponent
+    ViewContainerExampleComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +63,10 @@ const routeConfig: Route[] = [
     NzGridModule,
     NzButtonModule,
     PortalModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   bootstrap: [AppComponent],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }]

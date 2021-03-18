@@ -1,0 +1,16 @@
+<section class="operation-pane">
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="输入消息内容" name="alert-message" [(ngModel)]="messageValue" />
+        </mat-form-field>
+    </form>
+    <button mat-stroked-button class="form-inline-button" color="primary"
+        (click)="createComponent('success')">创建成功消息</button>
+    <button mat-stroked-button class="form-inline-button" color="accent"
+        (click)="createComponent('warning')">创建警告消息</button>
+    <button mat-raised-button class="form-inline-button" color="primary" (click)="clearContainer()">清空</button>
+</section>
+
+<div class="view-container">
+    <ng-container #dynamicComponentContainer></ng-container>
+</div>

@@ -1,0 +1,21 @@
+:host{
+    display: flex;
+    height: 100%;
+}
+
+.operation-pane{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-inline-button{
+    margin-top: 1rem;
+}
+
+.view-container{
+    flex: 1;
+    overflow-y: auto;
+    margin-left: 2rem;
+    padding: 2rem;
+    border: 1px dashed;
+}
