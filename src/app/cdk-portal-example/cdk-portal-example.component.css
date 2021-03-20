@@ -3,10 +3,11 @@
   height: 100%;
 }
 
-.dom-section {
+div.dom-section {
   margin-left: 1rem;
   padding: 1rem;
-  border: 1px solid #ccc;
+  background-color: #f2cc8f;
+  color: #3d405b;
 }
 
 .host-container {

@@ -16,22 +16,28 @@
 <section class="host-container">
     <div class="dynamic-view-container ">
         <h2>给指令传值插入内容:</h2>
-        <ng-template [cdkPortalOutlet]="selectedPortal">
+        <ng-template #directiveStyleHost [cdkPortalOutlet]="selectedPortal" (attached)="initComponent($event)">
         </ng-template>
     </div>
     <div class="dynamic-view-container ">
         <h2>调用 CdkPortalOutlet 对象的方法插入内容:</h2>
-        <ng-template #host cdkPortalOutlet (attached)="initComponent($event)"></ng-template>
+        <ng-template #codeStyleHost cdkPortalOutlet></ng-template>
     </div>
 </section>
 <div #domPortalContent class="dom-section">
     <h2>这是一个原生DOM内容</h2>
-    <p>绑定值：{{domFlagValue}}</p>
+    <p>可以用任意原生 DOM 元素构建 DomPortal。<br />
+        动态插入时，DomPortal 会把内容原样移动到新的地方。</p>
+    <p>在取消插入时，将再次原样恢复到其原来的位置。</p>
 </div>
 
 <ng-template #templatePortalContent>
-    <h2>这是一个模板内容</h2>
+    <section class="template-wrapper">
+        <span>来自 ng-template 的动态内容</span>
+    </section>
 </ng-template>
 <ng-template cdk-portal #directiveTemplate>
-    <h2>这是用 cdk-portal 指令声明的模板</h2>
+    <section class="template-wrapper">
+        <span>这是用 cdk-portal 指令声明的模板</span>
+    </section>
 </ng-template>

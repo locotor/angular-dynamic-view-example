@@ -1,5 +1,6 @@
 import {
-    Component, ComponentFactoryResolver, Injectable, Injector, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef
+    Component, ComponentFactoryResolver, EmbeddedViewRef, Injectable, Injector,
+    OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef
 } from '@angular/core';
 import { AlertComponent } from '../shared/alert.component';
 
@@ -10,8 +11,8 @@ export class CostumeInjector {
 
 @Component({
     template: `
-    <section style="margin-left: 1rem;">
-        <h2>来自另一个动态组件：{{param.message}}</h2>
+    <section class="template-wrapper" style="background-color:#81b29a;color:#FFF">
+        <span>来自另一个动态组件：{{param.message}}</span>
     </section>`
 })
 export class AnotherComponent {
@@ -26,6 +27,7 @@ export class ViewContainerExampleComponent implements OnInit, OnDestroy {
 
     @ViewChild('dynamicComponentContainer', { read: ViewContainerRef }) container!: ViewContainerRef;
     @ViewChild('templateView', { read: TemplateRef }) template!: TemplateRef<any>;
+    attachedEmbeddedView?: EmbeddedViewRef<any>;
     messageValue = '';
     dynamic = AnotherComponent;
     costumeInjector: Injector;
@@ -59,7 +61,13 @@ export class ViewContainerExampleComponent implements OnInit, OnDestroy {
     }
 
     createTemplate(): void {
-        this.container.createEmbeddedView(this.template);
+        this.attachedEmbeddedView = this.container.createEmbeddedView(this.template);
+    }
+
+    removeEmbeddedView(): void {
+        if (!this.attachedEmbeddedView) { return; }
+        const index = this.container.indexOf(this.attachedEmbeddedView);
+        this.container.remove(index);
     }
 
     clearContainer(): void {

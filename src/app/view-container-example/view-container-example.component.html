@@ -26,7 +26,8 @@
 <div></div>
 
 <ng-template #templateView>
-    <section style="margin-left: 1rem;">
-        <h2>来自 ng-template 的动态内容</h2>
+    <section class="template-wrapper">
+        <span>来自 ng-template 的动态内容</span>
+        <button mat-button (click)="removeEmbeddedView()">关闭</button>
     </section>
 </ng-template>

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ComponentRef, ElementRef, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, ComponentRef, ElementRef, EmbeddedViewRef, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { CdkPortal, ComponentPortal, DomPortal, Portal, TemplatePortal, CdkPortalOutletAttachedRef, CdkPortalOutlet } from '@angular/cdk/portal';
 import { AlertComponent } from '../shared/alert.component';
 
@@ -8,7 +8,8 @@ import { AlertComponent } from '../shared/alert.component';
 })
 export class CdkPortalExampleComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('host', { read: CdkPortalOutlet }) container!: CdkPortalOutlet;
+  @ViewChild('codeStyleHost', { read: CdkPortalOutlet }) codeContainer!: CdkPortalOutlet;
+  @ViewChild('directiveStyleHost', { read: CdkPortalOutlet }) directiveContainer!: CdkPortalOutlet;
   @ViewChild('directiveTemplate', { read: CdkPortal }) directiveTemplateContent!: CdkPortal;
   @ViewChild('templatePortalContent') templatePortalContent!: TemplateRef<unknown>;
   @ViewChild('domPortalContent') domPortalContent!: ElementRef<HTMLElement>;
@@ -17,7 +18,7 @@ export class CdkPortalExampleComponent implements OnInit, AfterViewInit {
   componentPortal?: ComponentPortal<AlertComponent>;
   templatePortal?: TemplatePortal<any>;
   domPortal?: DomPortal<any>;
-  domFlagValue = 'test';
+  embeddedView?: EmbeddedViewRef<any>;
 
   constructor(private viewContainerRef: ViewContainerRef) { }
 
@@ -34,20 +35,27 @@ export class CdkPortalExampleComponent implements OnInit, AfterViewInit {
   }
 
   attachComponent(): void {
-    this.container.detach();
-    this.container.attach(this.componentPortal);
+    if (!this.componentPortal) { return; }
+    this.codeContainer.detach();
+    const componentRef = this.codeContainer.attachComponentPortal(this.componentPortal);
+    componentRef.instance.message = '输入属性传值示例';
+    // 输出事件绑定示例
+    componentRef.instance.closeAlert.subscribe(() => {
+      this.codeContainer.detach();
+    });
   }
 
   attachTemplate(): void {
-    this.container.detach();
-    this.container.attach(this.templatePortal);
+    if (!this.templatePortal) { return; }
+    this.codeContainer.detach();
+    this.embeddedView = this.codeContainer.attachTemplatePortal(this.templatePortal);
   }
 
   initComponent(ref: CdkPortalOutletAttachedRef): void {
     if (ref instanceof ComponentRef) {
-      ref.instance.message = '初始化传值';
+      ref.instance.message = '输入属性传值示例';
       ref.instance.closeAlert.subscribe(() => {
-        this.componentPortal?.detach();
+        ref.destroy();
       });
     }
   }
