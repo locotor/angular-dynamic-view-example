@@ -1,0 +1,37 @@
+<section class="operation-pane">
+    <h2>指令传值</h2>
+    <button mat-stroked-button class="operation-button" color="primary"
+        (click)="selectedPortal = componentPortal">插入组件</button>
+    <button mat-stroked-button class="operation-button" color="primary"
+        (click)="selectedPortal = templatePortal">插入模板</button>
+    <button mat-stroked-button class="operation-button" color="primary"
+        (click)="selectedPortal = directiveTemplateContent">插入指令创建的模板</button>
+    <button mat-stroked-button class="operation-button" color="primary"
+        (click)="selectedPortal = domPortal">插入原生DOM</button>
+    <mat-divider style="margin: 1rem 0;"></mat-divider>
+    <h2>CdkPortalOutlet 方法</h2>
+    <button mat-stroked-button class="operation-button" color="primary" (click)="attachComponent()">插入组件</button>
+    <button mat-stroked-button class="operation-button" color="primary" (click)="attachTemplate()">插入模板</button>
+</section>
+<section class="host-container">
+    <div class="dynamic-view-container ">
+        <h2>给指令传值插入内容:</h2>
+        <ng-template [cdkPortalOutlet]="selectedPortal">
+        </ng-template>
+    </div>
+    <div class="dynamic-view-container ">
+        <h2>调用 CdkPortalOutlet 对象的方法插入内容:</h2>
+        <ng-template #host cdkPortalOutlet (attached)="initComponent($event)"></ng-template>
+    </div>
+</section>
+<div #domPortalContent class="dom-section">
+    <h2>这是一个原生DOM内容</h2>
+    <p>绑定值：{{domFlagValue}}</p>
+</div>
+
+<ng-template #templatePortalContent>
+    <h2>这是一个模板内容</h2>
+</ng-template>
+<ng-template cdk-portal #directiveTemplate>
+    <h2>这是用 cdk-portal 指令声明的模板</h2>
+</ng-template>

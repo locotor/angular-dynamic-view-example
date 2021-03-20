@@ -17,12 +17,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDividerModule } from '@angular/material/divider';
 
-import { CdkPortalComponent } from './cdk-portal.component';
 import { AppComponent } from './app.component';
 import { DynamicStringComponent } from './dynamic-string.component';
+import { AlertComponent } from './shared/alert.component';
 import { ViewContainerExampleComponent } from './view-container-example/view-container-example.component';
-import { AlertComponent } from './view-container-example/alert.component';
+import { CdkPortalExampleComponent } from './cdk-portal-example/cdk-portal-example.component';
 
 registerLocaleData(zh);
 
@@ -38,7 +39,7 @@ const routeConfig: Route[] = [
   },
   {
     path: 'cdk-directive',
-    component: CdkPortalComponent
+    component: CdkPortalExampleComponent
   },
   {
     path: 'string-component',
@@ -49,10 +50,10 @@ const routeConfig: Route[] = [
 @NgModule({
   declarations: [
     AppComponent,
-    CdkPortalComponent,
     DynamicStringComponent,
     ViewContainerExampleComponent,
-    AlertComponent
+    AlertComponent,
+    CdkPortalExampleComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +67,8 @@ const routeConfig: Route[] = [
     MatIconModule,
     MatButtonModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDividerModule
   ],
   bootstrap: [AppComponent],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }]

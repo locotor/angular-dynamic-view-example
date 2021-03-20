@@ -4,13 +4,29 @@
             <input matInput placeholder="输入消息内容" name="alert-message" [(ngModel)]="messageValue" />
         </mat-form-field>
     </form>
-    <button mat-stroked-button class="form-inline-button" color="primary"
-        (click)="createComponent('success')">创建成功消息</button>
-    <button mat-stroked-button class="form-inline-button" color="accent"
-        (click)="createComponent('warning')">创建警告消息</button>
-    <button mat-raised-button class="form-inline-button" color="primary" (click)="clearContainer()">清空</button>
+    <button mat-stroked-button class="operation-button" color="primary"
+        (click)="createComponent('success')">插入成功消息</button>
+    <button mat-stroked-button class="operation-button" color="accent"
+        (click)="createComponent('warning')">插入警告消息</button>
+    <button mat-stroked-button class="operation-button" color="primary" (click)="createTemplate()">插入模板</button>
+    <button mat-raised-button class="operation-button" color="primary" (click)="clearContainer()">清空</button>
 </section>
 
-<div class="view-container">
+<div class="dynamic-view-container">
+    <h2 style="border-bottom: 1px solid;">以代码方式动态插入</h2>
     <ng-container #dynamicComponentContainer></ng-container>
 </div>
+
+<div class="dynamic-view-container">
+    <h2 style="border-bottom: 1px solid;">以指令方式动态插入</h2>
+    <ng-container *ngComponentOutlet="dynamic;injector:costumeInjector"></ng-container>
+    <ng-container *ngTemplateOutlet="templateView"></ng-container>
+</div>
+
+<div></div>
+
+<ng-template #templateView>
+    <section style="margin-left: 1rem;">
+        <h2>来自 ng-template 的动态内容</h2>
+    </section>
+</ng-template>

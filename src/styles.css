@@ -1,4 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.dynamic-view-container {
+  flex: 1;
+  overflow-y: auto;
+  margin-left: 2rem;
+  padding: 2rem;
+  border: 1px dashed;
+}
+
+.operation-pane {
+  display: flex;
+  flex-direction: column;
+}
+
+button.operation-button {
+  margin-top: 1rem;
+}
