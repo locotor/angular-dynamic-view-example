@@ -19,15 +19,16 @@
 
 <div class="dynamic-view-container">
     <h2 style="border-bottom: 1px solid;">以指令方式动态插入</h2>
-    <ng-container *ngComponentOutlet="dynamic;injector:costumeInjector"></ng-container>
+    <ng-container *ngIf="anotherComponent"></ng-container>
+    <ng-container *ngComponentOutlet="anotherComponent;injector:costumeInjector"></ng-container>
     <ng-container *ngTemplateOutlet="templateView"></ng-container>
 </div>
 
 <div></div>
 
-<ng-template #templateView>
+<ng-template #templateView let-param="message">
     <section class="template-wrapper">
         <span>来自 ng-template 的动态内容</span>
-        <button mat-button (click)="removeEmbeddedView()">关闭</button>
+        <span>{{param}}</span>
     </section>
 </ng-template>

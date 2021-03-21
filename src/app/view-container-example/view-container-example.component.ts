@@ -1,35 +1,25 @@
 import {
-    Component, ComponentFactoryResolver, EmbeddedViewRef, Injectable, Injector,
+    AfterViewInit,
+    Component, ComponentFactoryResolver, EmbeddedViewRef, Injector,
     OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef
 } from '@angular/core';
 import { AlertComponent } from '../shared/alert.component';
-
-@Injectable()
-export class CostumeInjector {
-    message = '以依赖注入的方式传值';
-}
-
-@Component({
-    template: `
-    <section class="template-wrapper" style="background-color:#81b29a;color:#FFF">
-        <span>来自另一个动态组件：{{param.message}}</span>
-    </section>`
-})
-export class AnotherComponent {
-    constructor(public param: CostumeInjector) { }
-}
+import { AnotherComponent } from '../shared/another-component';
+import { ExampleService } from '../shared/example.service';
 
 @Component({
     templateUrl: './view-container-example.component.html',
     styleUrls: ['./view-container-example.component.css']
 })
-export class ViewContainerExampleComponent implements OnInit, OnDestroy {
+export class ViewContainerExampleComponent implements AfterViewInit, OnDestroy {
 
     @ViewChild('dynamicComponentContainer', { read: ViewContainerRef }) container!: ViewContainerRef;
     @ViewChild('templateView', { read: TemplateRef }) template!: TemplateRef<any>;
+    @ViewChild(AnotherComponent) anotherComponentRef!: AnotherComponent;
     attachedEmbeddedView?: EmbeddedViewRef<any>;
     messageValue = '';
-    dynamic = AnotherComponent;
+    templateContext = { message: '来自模板上下文的值' };
+    anotherComponent = AnotherComponent;
     costumeInjector: Injector;
 
     constructor(
@@ -37,14 +27,15 @@ export class ViewContainerExampleComponent implements OnInit, OnDestroy {
         injector: Injector
     ) {
         this.costumeInjector =
-            Injector.create({ providers: [{ provide: CostumeInjector, deps: [] }], parent: injector });
+            Injector.create({ providers: [{ provide: ExampleService, deps: [] }], parent: injector });
+    }
+    ngAfterViewInit(): void {
+        console.log(this.anotherComponentRef);
     }
 
     ngOnDestroy(): void {
         this.container.clear();
     }
-
-    ngOnInit(): void { }
 
     createComponent(type: string): void {
         const factory = this.resolver.resolveComponentFactory(AlertComponent);
@@ -61,13 +52,7 @@ export class ViewContainerExampleComponent implements OnInit, OnDestroy {
     }
 
     createTemplate(): void {
-        this.attachedEmbeddedView = this.container.createEmbeddedView(this.template);
-    }
-
-    removeEmbeddedView(): void {
-        if (!this.attachedEmbeddedView) { return; }
-        const index = this.container.indexOf(this.attachedEmbeddedView);
-        this.container.remove(index);
+        this.container.createEmbeddedView(this.template, this.templateContext);
     }
 
     clearContainer(): void {

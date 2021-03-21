@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
     template: `
-        <div class="alert-container mat-elevation-z2" [class]="messageType()">
+        <div class="alert-container mat-elevation-z2" [class]="classConfig()">
             <span class="message">{{message}}</span>
             <button mat-button (click)="emitCloseEvent()">关闭</button>
         </div>
@@ -26,12 +26,11 @@ export class AlertComponent {
     @Input() message = '空消息提示';
     @Input() type = 'success';
     @Output() closeAlert = new EventEmitter();
-
-    messageType(): any {
-        const classConfig: any = {};
-        classConfig.success = this.type === 'success';
-        classConfig.warning = this.type === 'warning';
-        return classConfig;
+    classConfig() {
+        return {
+            success: this.type === 'success',
+            warning: this.type === 'warning'
+        };
     }
 
     emitCloseEvent(): void {
