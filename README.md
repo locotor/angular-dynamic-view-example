@@ -14,7 +14,7 @@
 
 > 本项目演示了 Angular 几种动态视图方案，它们的区别和使用方式。
 
-![项目预览](https://github.com/locotor/angular-dynamic-view-example/blob/master/docs/images/angular-dynamic-example-preview.png)
+![项目预览](https://github.com/locotor/angular-dynamic-view-example/blob/master/preview.png)
 
 ### 🏠 [Homepage](https://github.com/locotor/angular-dynamic-view-example#readme)
 
