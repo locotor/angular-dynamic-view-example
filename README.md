@@ -14,45 +14,38 @@
 
 > 本项目演示了 Angular 几种动态视图方案，它们的区别和使用方式。
 
+![项目预览](https://github.com/locotor/angular-dynamic-view-example/blob/master/docs/images/angular-dynamic-example-preview.png)
+
 ### 🏠 [Homepage](https://github.com/locotor/angular-dynamic-view-example#readme)
 
-## Install
+## 安装
 
 ```sh
-npm i
+npm install
 ```
 
-## Usage
+## 使用
 
 ```sh
 npm start
 ```
 
-## Run tests
+## 作者
 
-```sh
-npm run test
-```
+👨‍🔧 **locotor**
 
-## Author
-
-👤 **locotor**
-
-* Website: https://blog.locotor.cn
+* 博客: https://blog.locotor.cn
 * Github: [@locotor](https://github.com/locotor)
 
-## 🤝 Contributing
+## 🤝 贡献
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/locotor/angular-dynamic-view-example/issues). You can also take a look at the [contributing guide](https://github.com/locotor/angular-dynamic-view-example/blob/master/CONTRIBUTING.md).
+欢迎提交 issues 或功能点!<br />欢迎查看 [issues 页](https://github.com/locotor/angular-dynamic-view-example/issues). 
 
-## Show your support
+## 支持一下
 
-Give a ⭐️ if this project helped you!
+如果项目有帮助，给个 ⭐️ 吧
 
 ## 📝 License
 
 Copyright © 2021 [locotor](https://github.com/locotor).<br />
 This project is [MIT](https://github.com/locotor/angular-dynamic-view-example/blob/master/LICENSE) licensed.
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
