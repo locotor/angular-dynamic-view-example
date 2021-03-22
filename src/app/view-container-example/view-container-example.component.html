@@ -9,7 +9,8 @@
     <button mat-stroked-button class="operation-button" color="accent"
         (click)="createComponent('warning')">插入警告消息</button>
     <button mat-stroked-button class="operation-button" color="primary" (click)="createTemplate()">插入模板</button>
-    <button mat-raised-button class="operation-button" color="primary" (click)="clearContainer()">清空</button>
+    <button mat-stroked-button class="operation-button" color="primary" (click)="moveToTop()">置顶最后一个</button>
+    <button mat-stroked-button class="operation-button" color="primary" (click)="clearContainer()">清空</button>
 </section>
 
 <div class="dynamic-view-container">
@@ -19,9 +20,9 @@
 
 <div class="dynamic-view-container">
     <h2 style="border-bottom: 1px solid;">以指令方式动态插入</h2>
-    <ng-container *ngIf="anotherComponent"></ng-container>
-    <ng-container *ngComponentOutlet="anotherComponent;injector:costumeInjector"></ng-container>
-    <ng-container *ngTemplateOutlet="templateView"></ng-container>
+    <ng-container *ngComponentOutlet="anotherComponent;injector:costumeInjector;content:costumeContent">
+    </ng-container>
+    <ng-container *ngTemplateOutlet="templateView; context: templateContext"></ng-container>
 </div>
 
 <div></div>

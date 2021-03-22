@@ -5,6 +5,7 @@ import { ExampleService } from './example.service';
     template: `
     <section class="template-wrapper" style="background-color:#81b29a;color:#FFF">
         <span>来自另一个动态组件：{{param.message}}</span>
+        <ng-content></ng-content>
     </section>`
 })
 export class AnotherComponent {

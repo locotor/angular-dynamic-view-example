@@ -1,6 +1,17 @@
 {
   "name": "angular-dynamic-view-example",
-  "version": "0.0.0",
+  "version": "0.7.2",
+  "description": "本项目演示了 Angular 几种动态视图方案，它们的区别和使用方式。",
+  "author": "locotor",
+  "license": "MIT",
+  "homepage": "https://github.com/locotor/angular-dynamic-view-example#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/locotor/angular-dynamic-view-example"
+  },
+  "bugs": {
+    "url": "https://github.com/locotor/angular-dynamic-view-example/issues"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,7 +20,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "~11.2.3",
     "@angular/common": "~11.2.3",

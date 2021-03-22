@@ -4,6 +4,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     template: `
         <div class="alert-container mat-elevation-z2" [class]="classConfig()">
             <span class="message">{{message}}</span>
+            <ng-content></ng-content>
             <button mat-button (click)="emitCloseEvent()">关闭</button>
         </div>
       `,
