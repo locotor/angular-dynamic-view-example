@@ -16,7 +16,7 @@
 
 ![项目预览](https://github.com/locotor/angular-dynamic-view-example/blob/master/preview.png)
 
-### 🏠 [Homepage](https://github.com/locotor/angular-dynamic-view-example#readme)
+### 🏠 [在线示例](https://coding-pages-bucket-1575455-8137703-14801-541995-1303365836.cos-website.ap-beijing.myqcloud.com/)
 
 ## 安装
 
