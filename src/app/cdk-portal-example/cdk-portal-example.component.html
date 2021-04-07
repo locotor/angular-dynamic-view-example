@@ -12,6 +12,12 @@
     <h2>CdkPortalOutlet 方法</h2>
     <button mat-stroked-button class="operation-button" color="primary" (click)="attachComponent()">插入组件</button>
     <button mat-stroked-button class="operation-button" color="primary" (click)="attachTemplate()">插入模板</button>
+    <mat-divider style="margin: 1rem 0;"></mat-divider>
+    <h2>插入外部容器</h2>
+    <button mat-stroked-button class="operation-button" color="primary"
+        (click)="openComponentPortalOutSideAngularContext()">在外部插入组件</button>
+    <button mat-stroked-button class="operation-button" color="primary"
+        (click)="openTemplatePortalInsideAngularContext()">在外部插入模板</button>
 </section>
 <section class="host-container">
     <div class="dynamic-view-container ">
@@ -31,7 +37,7 @@
     <p>在取消插入时，将再次原样恢复到其原来的位置。</p>
 </div>
 
-<ng-template #templatePortalContent>
+<ng-template #template>
     <section class="template-wrapper">
         <span>来自 ng-template 的动态内容</span>
     </section>

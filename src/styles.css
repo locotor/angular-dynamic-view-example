@@ -24,6 +24,7 @@ body {
   padding: 1rem;
   margin: 1rem;
   border: 1px solid #ccc;
+  background-color: #f2cc8f;
 }
 
 .operation-pane {
@@ -33,4 +34,11 @@ body {
 
 button.operation-button {
   margin-top: 1rem;
+}
+
+.outside-portal-container{
+  position: fixed;
+  top: 0;
+  left: calc(50% - 15%);
+  width: 30%;
 }
