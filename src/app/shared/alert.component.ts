@@ -1,9 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, Optional, Output } from '@angular/core';
+import { CustomInjectionToken } from './custom-Injector-token';
 
 @Component({
     template: `
         <div class="alert-container mat-elevation-z2" [class]="classConfig()">
             <span class="message">{{message}}</span>
+            <span>{{customData}}</span>
             <ng-content></ng-content>
             <button mat-button (click)="emitCloseEvent()">关闭</button>
         </div>
@@ -27,7 +29,10 @@ export class AlertComponent {
     @Input() message = '空消息提示';
     @Input() type = 'success';
     @Output() closeAlert = new EventEmitter();
-    classConfig() {
+
+    constructor(@Optional() @Inject(CustomInjectionToken) public customData: any) { }
+
+    classConfig(): { success: boolean, warning: boolean } {
         return {
             success: this.type === 'success',
             warning: this.type === 'warning'

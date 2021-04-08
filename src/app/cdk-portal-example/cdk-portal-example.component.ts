@@ -8,6 +8,7 @@ import {
 } from '@angular/cdk/portal';
 import { AlertComponent } from '../shared/alert.component';
 import { DOCUMENT } from '@angular/common';
+import { CustomInjectionToken } from '../shared/custom-Injector-token';
 
 @Component({
   templateUrl: './cdk-portal-example.component.html',
@@ -46,7 +47,9 @@ export class CdkPortalExampleComponent implements AfterViewInit {
     // 获取应用实例
     this.appRef = this.injector.get(ApplicationRef);
     // 创建外部容器
-    this.outsideOutlet = new DomPortalOutlet(this.outsideContainer, this.componentFactoryResolver, this.appRef, this.injector);
+    // 自定义注入器
+    const customInjector = Injector.create({ providers: [{ provide: CustomInjectionToken, useValue: 'test value' }] });
+    this.outsideOutlet = new DomPortalOutlet(this.outsideContainer, this.componentFactoryResolver, this.appRef, customInjector);
   }
 
   ngAfterViewInit(): void {
@@ -94,7 +97,12 @@ export class CdkPortalExampleComponent implements AfterViewInit {
     if (this.outsideOutlet.hasAttached()) {
       this.outsideOutlet.detach();
     }
-    this.outsideOutlet.attach(componentPortal);
+
+    const componentRef = this.outsideOutlet.attach(componentPortal);
+
+    componentRef.instance.closeAlert.subscribe(() => {
+      this.outsideOutlet.detach();
+    });
   }
 
   // 在应用外部插入动态模板。
